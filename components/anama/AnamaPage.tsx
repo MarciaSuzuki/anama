@@ -11,11 +11,15 @@ import { listEstrofesWithNotes } from "@/lib/notesStore";
 const TOTAL_ESTROFES = 40;
 const FULL_AUDIO_URL = "/os_quatro_de_anama_completo.mp3";
 const HEADER_IMAGE = "/forja_de_cordel.jpeg";
+const TITLE_IMAGE = "/TITULO.png";
+const CELEBRATION_IMAGE = "/CELEBRANDO%20A%20ORALIDADE.png";
 
 export function AnamaPage() {
   const [activeEstrofe, setActiveEstrofe] = useState<number | null>(null);
   const [recordedSet, setRecordedSet] = useState<Set<number>>(new Set());
   const [noteSet, setNoteSet] = useState<Set<number>>(new Set());
+  const [titleImageFailed, setTitleImageFailed] = useState(false);
+  const [celebrationImageFailed, setCelebrationImageFailed] = useState(false);
   const fullAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -66,20 +70,25 @@ export function AnamaPage() {
             className="object-cover"
             style={{ filter: "sepia(0.55) saturate(0.45) contrast(1.05)" }}
           />
-          <div
-            className="absolute inset-0"
-            style={{ background: `linear-gradient(to bottom, rgba(15,12,8,0.05), transparent 40%, ${PARCHMENT})` }}
-          />
         </div>
-        <div className="max-w-4xl mx-auto px-4 -mt-14 sm:-mt-20 relative z-10 text-center">
-          <h1
-            className="text-3xl sm:text-5xl md:text-6xl font-bold"
-            style={{ fontFamily: '"AnamaHeading", Georgia, serif', color: INK, letterSpacing: "0.01em" }}
-          >
-            Os Quatro de Anamá
-          </h1>
+        <div className="max-w-4xl mx-auto px-4 pt-6 sm:pt-8 relative z-10 text-center">
+          {!titleImageFailed ? (
+            <img
+              src={TITLE_IMAGE}
+              alt="Os Quatro de Anamá"
+              className="mx-auto w-full max-w-3xl h-auto"
+              onError={() => setTitleImageFailed(true)}
+            />
+          ) : (
+            <h1
+              className="text-3xl sm:text-5xl md:text-6xl font-bold"
+              style={{ fontFamily: '"AnamaHeading", Georgia, serif', color: INK, letterSpacing: "0.01em" }}
+            >
+              Os Quatro de Anamá
+            </h1>
+          )}
           <p className="mt-2 text-base sm:text-lg" style={{ color: INK }}>
-            Cordel de <span className="font-semibold">Marcia Suzuki</span>
+            <span className="font-semibold">Cordel Didático</span>
           </p>
           <p
             className="mt-3 inline-block px-3 py-1 text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase"
@@ -98,9 +107,6 @@ export function AnamaPage() {
           >
             Ouvir o cordel completo
           </h2>
-          <p className="text-sm opacity-80 mb-3">
-            Reproduza o cordel inteiro ou clique em uma bandeirinha abaixo para abrir uma estrofe.
-          </p>
           <audio
             ref={fullAudioRef}
             controls
@@ -116,10 +122,10 @@ export function AnamaPage() {
         <section>
           <div className="flex items-end justify-between mb-4 sm:mb-6 flex-wrap gap-2">
             <h2
-            className="text-xl sm:text-2xl font-bold"
-            style={{ fontFamily: '"AnamaHeading", Georgia, serif' }}
-          >
-            As 40 estrofes
+              className="text-xl sm:text-2xl font-bold"
+              style={{ fontFamily: '"AnamaHeading", Georgia, serif' }}
+            >
+              Ouvir por estrofes
             </h2>
             <div className="text-xs sm:text-sm flex items-center gap-3 opacity-80">
               <span className="flex items-center gap-1">
@@ -146,12 +152,23 @@ export function AnamaPage() {
             onSelect={handleSelect}
           />
 
-          <p
-            className="mt-10 text-center text-2xl sm:text-3xl md:text-4xl font-semibold italic"
-            style={{ fontFamily: '"AnamaHeading", Georgia, serif', color: INK, letterSpacing: "0.02em" }}
-          >
-            Celebrando a Oralidade
-          </p>
+          <div className="mt-10 text-center">
+            {!celebrationImageFailed ? (
+              <img
+                src={CELEBRATION_IMAGE}
+                alt="Celebrando a Oralidade"
+                className="mx-auto w-full max-w-2xl h-auto"
+                onError={() => setCelebrationImageFailed(true)}
+              />
+            ) : (
+              <p
+                className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold italic"
+                style={{ fontFamily: '"AnamaHeading", Georgia, serif', color: INK, letterSpacing: "0.02em" }}
+              >
+                Celebrando a Oralidade
+              </p>
+            )}
+          </div>
 
           <p className="mt-6 text-xs opacity-60 text-center">
             Suas gravações e anotações ficam salvas neste navegador. Use o mesmo dispositivo para retomar o trabalho.

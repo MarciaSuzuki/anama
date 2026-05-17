@@ -1,13 +1,8 @@
 "use client";
 
-const PALETTE = ["#c5c29f", "#a89669", "#dcc392", "#8b7d5a"] as const;
-
 export const INK = "#0f0c08";
 export const PARCHMENT = "#ead9ae";
-
-export function flagColor(n: number): string {
-  return PALETTE[(n - 1) % PALETTE.length];
-}
+const PAPER_WHITE = "#ffffff";
 
 interface Props {
   number: number;
@@ -17,8 +12,6 @@ interface Props {
 }
 
 export function BuntingFlag({ number, hasRecording, hasNote, onClick }: Props) {
-  const fill = flagColor(number);
-
   return (
     <button
       type="button"
@@ -36,16 +29,16 @@ export function BuntingFlag({ number, hasRecording, hasNote, onClick }: Props) {
         >
           <polygon
             points="2,2 58,2 30,76"
-            fill={fill}
+            fill={INK}
             stroke={INK}
             strokeWidth="1.5"
             strokeLinejoin="round"
           />
-          <line x1="6" y1="8" x2="54" y2="8" stroke={INK} strokeWidth="0.6" opacity="0.55" />
+          <line x1="6" y1="8" x2="54" y2="8" stroke={PAPER_WHITE} strokeWidth="0.6" opacity="0.32" />
         </svg>
         <span
           className="absolute inset-0 flex items-start justify-center pt-1.5 sm:pt-2 font-bold text-base sm:text-lg md:text-xl"
-          style={{ fontFamily: "Fraunces, Georgia, serif", color: INK }}
+          style={{ fontFamily: '"AnamaHeading", Georgia, serif', color: PAPER_WHITE }}
         >
           {number}
         </span>
