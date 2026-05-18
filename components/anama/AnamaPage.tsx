@@ -11,8 +11,8 @@ import { listEstrofesWithNotes } from "@/lib/notesStore";
 const TOTAL_ESTROFES = 40;
 const FULL_AUDIO_URL = "/os_quatro_de_anama_completo.mp3";
 const HEADER_IMAGE = "/forja_de_cordel.jpeg";
-const TITLE_IMAGE = "/TITULO.png";
-const CELEBRATION_IMAGE = "/CELEBRANDO%20A%20ORALIDADE.png";
+const TITLE_IMAGE = "/titulo_2.png";
+const CELEBRATION_IMAGE = "/celebrando_a_oralidade_2.png";
 
 export function AnamaPage() {
   const [activeEstrofe, setActiveEstrofe] = useState<number | null>(null);
