@@ -13,6 +13,7 @@ const FULL_AUDIO_URL = "/os_quatro_de_anama_completo.mp3";
 const HEADER_IMAGE = "/forja_de_cordel.jpeg";
 const TITLE_IMAGE = "/titulo_2.png";
 const CELEBRATION_IMAGE = "/celebrando_a_oralidade_2.png";
+const FOOTER_LOGO = "/shema-icon-preto.svg";
 
 export function AnamaPage() {
   const [activeEstrofe, setActiveEstrofe] = useState<number | null>(null);
@@ -176,8 +177,13 @@ export function AnamaPage() {
         </section>
       </main>
 
-      <footer className="py-8 text-center text-xs opacity-60">
-        Os Quatro de Anamá · Cordel interativo
+      <footer className="py-8 px-4 text-center">
+        <img
+          src={FOOTER_LOGO}
+          alt="Shema"
+          className="mx-auto mb-3 h-10 w-auto sm:h-12"
+        />
+        <p className="text-xs opacity-60">Os Quatro de Anamá · Cordel interativo</p>
       </footer>
 
       {activeEstrofe !== null && (
