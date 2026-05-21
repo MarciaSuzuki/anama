@@ -9,8 +9,7 @@ import { listRecordedEstrofes } from "@/lib/audioStore";
 import { listEstrofesWithNotes } from "@/lib/notesStore";
 
 const TOTAL_ESTROFES = 40;
-const PRIMARY_FULL_AUDIO_URL = "/cordel_completo_novo.mp3";
-const SECONDARY_FULL_AUDIO_URL = "/os_quatro_de_anama_completo.mp3";
+const PRIMARY_FULL_AUDIO_URL = "/anama_novo.mp3";
 const HEADER_IMAGE = "/forja_de_cordel.jpeg";
 const TITLE_IMAGE = "/titulo_2.png";
 const CELEBRATION_IMAGE = "/celebrando_a_oralidade_2.png";
@@ -109,35 +108,16 @@ export function AnamaPage() {
           >
             Ouvir o cordel completo
           </h2>
-          <div ref={fullAudioGroupRef} className="space-y-4">
-            <div>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] opacity-75">
-                Nova versão
-              </p>
-              <audio
-                controls
-                preload="none"
-                src={PRIMARY_FULL_AUDIO_URL}
-                className="w-full"
-                aria-label="Nova versão do cordel completo Os Quatro de Anamá"
-              >
-                Seu navegador não suporta áudio HTML5.
-              </audio>
-            </div>
-            <div>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.14em] opacity-75">
-                Versão anterior
-              </p>
-              <audio
-                controls
-                preload="none"
-                src={SECONDARY_FULL_AUDIO_URL}
-                className="w-full"
-                aria-label="Versão anterior do cordel completo Os Quatro de Anamá"
-              >
-                Seu navegador não suporta áudio HTML5.
-              </audio>
-            </div>
+          <div ref={fullAudioGroupRef}>
+            <audio
+              controls
+              preload="none"
+              src={PRIMARY_FULL_AUDIO_URL}
+              className="w-full"
+              aria-label="Cordel completo Os Quatro de Anamá"
+            >
+              Seu navegador não suporta áudio HTML5.
+            </audio>
           </div>
         </section>
 
